@@ -1,18 +1,49 @@
-# Dependency directories
+# =========================================================================
+# MedBot Master GitIgnore Configuration
+# =========================================================================
+
+# 1. Frontend & Backend Node Dependencies
 node_modules/
 frontend/node_modules/
 backend/node_modules/
 
-# Local environment variables (keeps your database passwords safe)
+# 2. Python Virtual Environments (Isolates your audio & nlu dependencies)
+venv/
+**/venv/
+ENV/
+env/
+.venv/
+
+# 3. Python Compiled Bytecode & Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# 4. Rasa NLU Specific Exclusions (Crucial: prevents massive model commits)
+nlu/.rasa/
+nlu/models/
+.rasa/
+models/
+
+# 5. Environment Variables & Security Secrets
 .env
+*.env
 backend/.env
 frontend/.env
+audio/.env
+nlu/.env
+*.local
+*.json   # Optional: add if you download a private Google Service Account Key file here
 
-# Production build outputs
-frontend/build/
+# 6. Audio Generation Artifacts (Prevents saving generated text-to-speech files)
+audio/*.mp3
+*.mp3
 
-# IDE/System logs
+# 7. Operating System & IDE specific files
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
 *.log
-.cache/
